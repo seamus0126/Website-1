@@ -9,7 +9,7 @@ const crtScreen = document.getElementById('crt-screen');
 const newImage = document.createElement('img');
 newImage.classList.add('new-screen');
 
-const images = ['Images/Static.gif','Images/glitch.gif', 'Images/glitch2.gif' , 'Images/glitch3.gif'];
+const images = ['Images/Static.gif','Images/static2.gif','Images/glitch.gif', 'Images/glitch2.gif' , 'Images/glitch3.gif'];
 let currentIndex = 0;
 let isPoweredOn = false;
 
@@ -28,7 +28,7 @@ function changeScreen() {
         crtScreen.style.display = 'none';
         newImage.style.display = 'block';
         crtScreen.parentNode.appendChild(newImage);
-        currentIndex = (currentIndex +1); // Cycle through the images
+        currentIndex = (currentIndex + 1) % size; // Cycle through the images
     }
     else{
     button2.disabled = true;
@@ -38,6 +38,7 @@ function changeScreen() {
 //Button 3 'Power' Toggle
 function powerToggle(){
     isPoweredOn = !isPoweredOn;
+    currentIndex = 0; //reset currentindex
     if (isPoweredOn){
         button2.disabled = false;
     }
